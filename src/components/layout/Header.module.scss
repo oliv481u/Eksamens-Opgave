@@ -1,0 +1,19 @@
+.layout-header {
+    width: 100%;
+    height: var(--navbar-height);
+    padding-bottom: calc(var(--navbar-height) / 2);
+    background-color: var(--onyx);
+
+    .layout-header-content {
+        width: var(--navbar-width);
+        height: 100%;
+        margin: auto;
+
+        .layout-header-logo-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: fit-content;
+        }
+    }
+}

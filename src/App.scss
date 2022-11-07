@@ -1,0 +1,18 @@
+:root {
+    //Colors
+    --eerie-black: #222222ff;
+    --star-command-blue: #337ab7ff;
+    --onyx: #343742ff;
+    --independence: #474b5aff;
+    --dim-gray: #676a73ff;
+    --sonic-silver: #777777ff;
+    --gainsboro: #d4dae3ff;
+    --platinum: #e5e5e5ff;
+    --cultured: #f8f8faff;
+    --safety-orange-blaze-orange: #ff6600ff;
+
+    //Layout variables
+    --header-height: calc(var(--navbar-height) * 1.5);
+    --navbar-height: 80px;
+    --navbar-width: 70vw;
+}
