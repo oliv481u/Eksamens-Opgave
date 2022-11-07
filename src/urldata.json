@@ -1,4 +1,4 @@
 {
-    "url": "192.168.0.86:5333",
+    "url": "http://localhost:5333",
     "default-url": "http://localhost:5333"
 }

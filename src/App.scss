@@ -12,7 +12,10 @@
     --safety-orange-blaze-orange: #ff6600ff;
 
     //Layout variables
+    --page-content-width: 70vw;
+
     --header-height: calc(var(--navbar-height) * 1.5);
     --navbar-height: 80px;
-    --navbar-width: 70vw;
+
+    --footer-height: 475px;
 }

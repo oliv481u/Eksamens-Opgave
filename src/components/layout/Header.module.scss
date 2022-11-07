@@ -5,9 +5,14 @@
     background-color: var(--onyx);
 
     .layout-header-content {
-        width: var(--navbar-width);
+        width: var(--page-content-width);
         height: 100%;
         margin: auto;
+
+        display: flex;
+        
+        justify-content: space-between;
+        align-items: center;
 
         .layout-header-logo-container {
             display: flex;
@@ -15,5 +20,11 @@
             height: 100%;
             width: fit-content;
         }
+    }
+
+    .layout-header-contactinfo {
+        display: flex;
+        font-style: normal;
+        color: var(--platinum);
     }
 }
