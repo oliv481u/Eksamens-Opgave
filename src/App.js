@@ -21,7 +21,7 @@ export default App;
 
 
 const Forside = () => {
-	return <div style={{ height: "600px", ["background-color"]: "grey" }}>
+	return <div style={{ height: "600px", backgroundColor: "grey" }}>
 
 	</div>
 }

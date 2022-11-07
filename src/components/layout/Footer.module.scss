@@ -23,6 +23,44 @@
             color: #fff;
             font-size: 1.5em;
             font-style: normal;
+            margin-top: 0;
+        }
+        .footer-content-links {
+            ul {
+                padding: 0;
+                list-style: none;
+
+                li {
+                    margin-bottom: 20px;
+
+                    a {
+                        color: var(--gainsboro);
+                        text-decoration: none;
+
+                        &::before {
+                            content: "";
+                            position: relative;
+                            bottom: 3px;
+                            border: solid var(--gainsboro) 1px;
+                            border-left: none;
+                            border-bottom: none;
+                            margin-right: 10px;
+                            transform: rotateZ(45deg);
+                            width: 4px;
+                            height: 4px;
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer-content-kontakt {
+            font-style: normal;
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
         }
 
         .footer-content-nyhedsbrev {
@@ -83,12 +121,21 @@
         .layout-footer-content-bottom-SOME-container {
             display: flex;
             gap: 15px;
-            & > div {
+            & > a {
                 width: 40px;
                 height: 40px;
 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
                 border: solid var(--dim-gray) 2px;
                 border-radius: 100%;
+
+                img {
+                    max-height: 15px;
+                    max-width: 15px;
+                }
             }
         }
     }

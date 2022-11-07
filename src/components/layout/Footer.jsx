@@ -1,6 +1,17 @@
+import { useEffect, useState } from "react"
+
+import urldata from "../../urldata.json"
 import styles from "./Footer.module.scss"
 
 const Footer = () => {
+
+    const [data, setData] = useState(null)
+
+    useEffect(() => {
+        fetch(`${urldata.url}/contactinformation`)
+            .then(res => res.json())
+            .then(json => setData(json))
+    }, [])
 
     return <footer className={styles["layout-footer"]}>
         <div className={styles["layout-footer-main-content"]}>
@@ -15,14 +26,19 @@ const Footer = () => {
             <div className={styles["footer-content-links"]}>
                 <p className={styles.title}>Link</p>
                 <ul>
-                    <li><a href="">FAQ</a></li>
-                    <li><a href="">Om os</a></li>
-                    <li><a href="">Kontakt os</a></li>
-                    <li><a href="">Services</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/om-os">Om os</a></li>
+                    <li><a href="/kontakt-os">Kontakt os</a></li>
+                    <li><a href="/services">Services</a></li>
                 </ul>
             </div>
             <address className={styles["footer-content-kontakt"]}>
                 <p className={styles.title}>Kontakt os</p>
+                {data && <>
+                    <p><b>Adresse:</b> {data.address}</p>
+                    <p><b>Telefon:</b> <a href={`tel: ${data.phone}`}>{data.phone}</a></p>
+                    <p><b>Email:</b> <a href={`mailto: ${data.email}`}>{data.email}</a></p>
+                </>}
             </address>
             <div className={styles["footer-content-nyhedsbrev"]}>
                 <p className={styles.title}>Nyhedsbrev</p>
@@ -39,10 +55,11 @@ const Footer = () => {
             <div className={styles["layout-footer-content-bottom"]}>
                 <p><span>Strøm</span> &copy; 2022 All Rights Reserved</p>
                 <div className={styles["layout-footer-content-bottom-SOME-container"]}>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    {data && data.some.map((x, index) => {
+                        return <a href={x.link} key={"some" + index}>
+                            <img src={`/images/icon/some/${x.icon}.svg`} alt="" />
+                        </a>
+                    })}
                     {/* ICONS MISSING */}
                 </div>
             </div>
