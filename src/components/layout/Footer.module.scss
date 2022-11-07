@@ -1,0 +1,95 @@
+.layout-footer {
+    height: var(--footer-height);
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: var(--independence);
+
+    .layout-footer-main-content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 50px;
+        justify-items: center;
+
+        width: var(--page-content-width);
+        margin: 70px auto 0 auto;
+
+        color: var(--gainsboro);
+
+        .title {
+            color: #fff;
+            font-size: 1.5em;
+            font-style: normal;
+        }
+
+        .footer-content-nyhedsbrev {
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+
+            input {
+                margin: 10px 0;
+                border: none;
+                border-radius: 5px;
+                min-height: 46px;
+                text-indent: 15px;
+
+                background-color: var(--dim-gray);
+
+                &::placeholder {
+                    color: var(--eerie-black);
+                    font-size: medium;
+                }
+            }
+
+            button {
+                margin: 10px 0;
+                background-color: var(--safety-orange-blaze-orange);
+                min-height: 50px;
+                border: none;
+                border-radius: 5px;
+                color: #fff;
+
+                width: 120px;
+            }
+        }
+    }
+
+    .layout-footer-separator {
+        margin: 0;
+        border: solid var(--dim-gray) 1px;
+    }
+
+    .layout-footer-content-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        min-height: 70px;
+        width: var(--page-content-width);
+        margin: auto;
+
+        p {
+            color: #fff;
+            span {
+                color: var(--safety-orange-blaze-orange);
+            }
+        }
+
+        .layout-footer-content-bottom-SOME-container {
+            display: flex;
+            gap: 15px;
+            & > div {
+                width: 40px;
+                height: 40px;
+
+                border: solid var(--dim-gray) 2px;
+                border-radius: 100%;
+            }
+        }
+    }
+}

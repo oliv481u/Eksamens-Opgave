@@ -10,7 +10,7 @@ const Header = () => {
     useEffect(() => {
         fetch(`${urldata.url}/contactinformation`)
             .then(res => res.json())
-            .then(json => setData(json.address))
+            .then(json => setData(json))
     }, [])
 
     return <header className={styles["layout-header"]}>
@@ -19,7 +19,11 @@ const Header = () => {
                 <img src="images/logo/logo.png" alt="" />
             </div>
 
-            {data && console.log(data)}
+        <address className={styles["layout-header-contactinfo"]}>
+            {data && data.address}
+            {data && data.openinghours}
+            {data && data.phone}
+        </address>
         </div>
     </header>
 }
