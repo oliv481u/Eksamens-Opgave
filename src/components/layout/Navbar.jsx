@@ -14,7 +14,7 @@ const Navbar = () => {
 
         <div className={styles["layout-navbar-search-container"]}>
             <input type="text" placeholder="Søg" />
-            <button class="glyphicons-search"></button>
+            <button className="glyphicons-search"></button>
         </div>
     </nav>
 }

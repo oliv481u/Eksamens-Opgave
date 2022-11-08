@@ -1,0 +1,39 @@
+.forside-section {
+    padding: 50px 0;
+    padding-bottom: 100px;
+
+    margin: auto;
+
+    h2 {
+        font-size: 2em;
+        margin: 0;
+    }
+    p {
+        margin: 0;
+    }
+
+    & > div {
+        width: var(--page-content-width);
+        margin: auto;
+        text-align: center;
+    }
+
+    & + .forside-section {
+        background-color: var(--onyx);
+        color: #fff;
+
+        padding-bottom: 40px;
+    }
+
+    .forside-section-readmore-container {
+        margin: 50px;
+
+        a {
+            background-color: var(--safety-orange-blaze-orange);
+            padding: 13px 30px;
+            border-radius: 7px;
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+}

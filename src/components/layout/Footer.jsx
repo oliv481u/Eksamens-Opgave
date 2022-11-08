@@ -23,7 +23,7 @@ const Footer = () => {
         const data = Object.fromEntries(dataArray)
 
         //Email validation regex
-        if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data.email)) {
+        if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/.test(data.email)) {
             setEmailSignupResponse(<sub style={{ color: "red" }}>Indtast en email!</sub>)
             return;
         }
