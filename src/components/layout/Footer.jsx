@@ -13,6 +13,42 @@ const Footer = () => {
             .then(json => setData(json))
     }, [])
 
+    const [emailSignupResponse, setEmailSignupResponse] = useState()
+
+    function NewsletterSignup(e) {
+        e.preventDefault()
+
+        const formData = new FormData(e.target)
+        const dataArray = [...formData]
+        const data = Object.fromEntries(dataArray)
+
+        //Email validation regex
+        if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data.email)) {
+            setEmailSignupResponse(<sub style={{ color: "red" }}>Indtast en email!</sub>)
+            return;
+        }
+
+        fetch(`${urldata.url}/newssubscription`, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => {
+                if (res.ok) {
+                    setEmailSignupResponse(<sub style={{ color: "lime" }}>Tilmeldt!</sub>)
+                } else {
+                    res.text().then(msg => {
+                        if (msg.includes("duplicate"))
+                            setEmailSignupResponse(<sub style={{ color: "red" }}>Denne email er allerede tilmeldt!</sub>)
+                        else {
+                            setEmailSignupResponse(<sub style={{ color: "red" }}>Indtast en email!</sub>)
+                        }
+                    })
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+
     return <footer className={styles["layout-footer"]}>
         <div className={styles["layout-footer-main-content"]}>
             <div className={styles["footer-content-garanti"]}>
@@ -43,8 +79,9 @@ const Footer = () => {
             <div className={styles["footer-content-nyhedsbrev"]}>
                 <p className={styles.title}>Nyhedsbrev</p>
                 <p>Tilmeld dig vores nyhedsbrev her</p>
-                <form>
-                    <input type="text" placeholder="Din Email" />
+                <form onSubmit={NewsletterSignup}>
+                    <input name="email" type="text" placeholder="Din Email" />
+                    {emailSignupResponse && emailSignupResponse}
                     <button>TILMELD</button>
                 </form>
             </div>
@@ -57,14 +94,13 @@ const Footer = () => {
                 <div className={styles["layout-footer-content-bottom-SOME-container"]}>
                     {data && data.some.map((x, index) => {
                         return <a href={x.link} key={"some" + index}>
-                            <img src={`/images/icon/some/${x.icon}.svg`} alt="" />
+                            <i className={x.icon} alt="" />
                         </a>
                     })}
-                    {/* ICONS MISSING */}
                 </div>
             </div>
         </div>
-    </footer >
+    </footer>
 }
 
 export default Footer

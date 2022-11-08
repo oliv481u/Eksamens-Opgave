@@ -10,7 +10,7 @@
         margin: auto;
 
         display: flex;
-        
+
         justify-content: space-between;
         align-items: center;
 
@@ -24,7 +24,23 @@
 
     .layout-header-contactinfo {
         display: flex;
+        align-items: center;
         font-style: normal;
         color: var(--platinum);
+
+        p,
+        a {
+            margin-left: 3em;
+            height: fit-content;
+            text-decoration: none;
+            color: inherit;
+
+            i::before {
+                font-size: 0.75em;
+                color: var(--safety-orange-blaze-orange);
+                margin: 0;
+                margin-right: 10px;
+            }
+        }
     }
 }

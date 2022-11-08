@@ -125,6 +125,9 @@
                 width: 40px;
                 height: 40px;
 
+                text-decoration: none;
+                color: var(--platinum);
+
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -132,9 +135,9 @@
                 border: solid var(--dim-gray) 2px;
                 border-radius: 100%;
 
-                img {
-                    max-height: 15px;
-                    max-width: 15px;
+                i::before {
+                    margin: 0;
+                    font-size: 18px;
                 }
             }
         }

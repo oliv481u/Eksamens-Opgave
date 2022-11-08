@@ -19,11 +19,11 @@ const Header = () => {
                 <img src="images/logo/logo.png" alt="" />
             </div>
 
-        <address className={styles["layout-header-contactinfo"]}>
-            {data && data.address}
-            {data && data.openinghours}
-            {data && data.phone}
-        </address>
+            <address className={styles["layout-header-contactinfo"]}>
+                <p><i class="glyphicons-location" />{data && data.address}</p>
+                <p><i class="glyphicons-time" />{data && data.openinghours}</p>
+                {data && <a href={`tel:${data.phone}`}><i class="glyphicons-phone" />{data.phone}</a>}
+            </address>
         </div>
     </header>
 }

@@ -22,22 +22,53 @@
         list-style: none;
 
         a {
-            //MISSING FONT
             color: var(--eerie-black);
+            font-weight: 500;
             text-decoration: none;
+            transition: color 250ms;
+
+            &:hover {
+                color: var(--safety-orange-blaze-orange);
+            }
+        }
+        .activeLink {
+            transition: none;
+            color: var(--safety-orange-blaze-orange);
         }
     }
 
-    input {
-        margin: 15px 20px;
-        border: solid var(--platinum) 1px;
-        border-radius: 5px;
-        min-height: 46px;
-        text-indent: 15px;
+    .layout-navbar-search-container {
+        position: relative;
 
-        &::placeholder {
-            color: var(--eerie-black);
-            font-size: medium;
+        input {
+            margin: 15px 20px;
+            border: solid var(--platinum) 1px;
+            border-radius: 5px;
+            min-height: 46px;
+            text-indent: 15px;
+
+            &::placeholder {
+                color: var(--eerie-black);
+                font-size: medium;
+            }
+        }
+        button {
+            position: absolute;
+
+            right: 35px;
+            top: 50%;
+            transform: translateY(-50%);
+            transform-origin: center center;
+            margin: 0;
+
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+
+            &::before {
+                margin: 0;
+                font-size: 14px;
+            }
         }
     }
 }
