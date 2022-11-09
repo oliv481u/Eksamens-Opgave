@@ -20,6 +20,8 @@ const Testimonials = () => {
         _setDragPos(data)
     }
 
+    const testimonialContainer = useRef()
+
     useState(() => {
         fetch(`${urldata.url}/testimonial`)
             .then(res => res.json())
@@ -31,8 +33,6 @@ const Testimonials = () => {
 
         window.addEventListener('mouseup', MouseUp)
 
-        // console.log("ran")
-
         return () => {
             window.removeEventListener('mousemove', DragTestimonials)
             window.removeEventListener('mouseup', MouseUp)
@@ -40,24 +40,41 @@ const Testimonials = () => {
     }, [])
 
     function MouseDown(e) {
-        setDragPos(e.clientX)
         setDragging(true)
+        setDragPos(e.clientX)
+        testimonialContainer.current.classList.remove(styles.smooth)
     }
 
-    function MouseUp() {
-        // console.log(draggingStateRef.current)
+    function MouseUp(e) {
         setDragging(false)
+        testimonialContainer.current.classList.add(styles.smooth)
+
+        const testimonialContainerWidth = testimonialContainer.current.getBoundingClientRect().width + 40
+        const testimonialWidth = testimonialContainerWidth / 3
+        const index = Math.round((ParseElementXTranslation(testimonialContainer.current) / testimonialWidth) - 1) * -1
+
+        MoveTestimonialsIndex(index)
     }
 
     function DragTestimonials(e) {
-        // console.log(draggingStateRef.current)
         if (!draggingStateRef.current)
             return;
 
         const x = e.clientX
-        console.log(dragPosRef.current)
+        MoveTestimonials(x - dragPosRef.current)
+        setDragPos(x)
     }
 
+    function MoveTestimonials(amount) {
+        const currentTranslate = ParseElementXTranslation(testimonialContainer.current)
+        testimonialContainer.current.style.transform = `translateX(${amount + currentTranslate}px)`
+    }
+
+    function MoveTestimonialsIndex(index) {
+        index *= -1
+        const testimonialContainerWidth = testimonialContainer.current.getBoundingClientRect().width + 40
+        testimonialContainer.current.style.transform = `translateX(${(testimonialContainerWidth / 3) * (index + 1)}px)`
+    }
 
     return <section className={styles["testimonials-section"]}>
         <div className={styles["testimonials-backgroundimage-container"]}>
@@ -70,17 +87,43 @@ const Testimonials = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci quos illum quasi?
             </p>
             <div className={styles["testimonials-section-separator"]} />
-            <div className={styles["testimonials-section-container"]} onMouseDown={() => MouseDown}>
-                {testimonials && testimonials.map((x, index) =>
-                    <Testimonial key={"testimonial" + index} name={x.name} title={x.title} comment={x.review} img={`/images/testimonials/${x.image}`} />
-                )}
+            <div ref={testimonialContainer} className={styles["testimonials-section-container"]} onMouseDown={MouseDown}>
+                {testimonials && testimonials.map((x, index) => {
+
+                    return <Testimonial key={"testimonial" + index} name={x.name} title={x.title} comment={x.review} img={`/images/testimonials/${x.image}`} />
+                })}
             </div>
         </div>
-    </section>
+    </section >
 }
+export default Testimonials
 
-const Testimonial = ({ name, title, comment, img }) => (
-    <div className={styles["testimonail-container"]}>
+const Testimonial = ({ name, title, comment, img }) => {
+
+    const ref = useRef()
+
+    useEffect(() => {
+        window.addEventListener('mousemove', OnMouseMove)
+
+        return () => window.removeEventListener('mousemove', OnMouseMove)
+    }, [])
+
+    function OnMouseMove() {
+
+        const currentTranslation = ParseElementXTranslation(ref.current)
+        const containerWidth = ref.current.parentElement.getBoundingClientRect().width
+
+        if (ref.current.getBoundingClientRect().x <= -170) {
+            const newTranslation = currentTranslation + containerWidth + 40 + (containerWidth + 40) / 3
+            ref.current.style.transform = `translateX(${newTranslation}px)`
+        }
+        else if (ref.current.getBoundingClientRect().x >= containerWidth + (containerWidth) / 4) {
+            const newTranslation = currentTranslation - containerWidth - 40 - (containerWidth + 40) / 3
+            ref.current.style.transform = `translateX(${newTranslation}px)`
+        }
+    }
+
+    return <div ref={ref} style={{ transform: "translateX(0px)" }} className={styles["testimonail-container"]}>
         <div className={styles["testimonail-image-container"]}>
             <img src={img} alt="" draggable={false} />
         </div>
@@ -88,6 +131,14 @@ const Testimonial = ({ name, title, comment, img }) => (
         <sub className={styles["testimonail-title"]}>{title}</sub>
         <p className={styles["testimonail-comment"]}>{comment}</p>
     </div>
-)
+}
 
-export default Testimonials
+
+function ParseElementXTranslation(element) {
+    const transform = element.style.transform
+    if (!element.style.transform)
+        element.style.transform = "translateX(0px)"
+    const currentTranslate = parseFloat(transform.slice(transform.indexOf("(") + 1, transform.indexOf("px)")))
+
+    return currentTranslate
+}

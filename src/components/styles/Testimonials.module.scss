@@ -67,8 +67,24 @@
 
         .testimonials-section-container {
             display: grid;
+
             grid-template-columns: repeat(4, calc((100% - 80px) / 3));
             gap: 40px;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+
+                height: 100%;
+                width: 10000vw;
+                transform: translate(-50%);
+            }
+
+            &.smooth {
+                transition: transform 1s ease-in-out;
+                color: black;
+            }
         }
     }
 }
