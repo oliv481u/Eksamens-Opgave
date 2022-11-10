@@ -69,9 +69,9 @@ const Services = ({ teaser }) => {
                 <h3>
                     <span className="orange">Book</span> <br /> service nu
                 </h3>
-                <input name="name" type="text" />
-                <input name="email" type="text" />
-                <input name="phone" type="text" />
+                <input name="name" placeholder="Dit navn" type="text" />
+                <input name="email" placeholder="Din email" type="text" />
+                <input name="phone" placeholder="Telefon nr." type="text" />
                 <button>SEND</button>
             </form>
         </div>

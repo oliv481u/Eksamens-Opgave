@@ -1,8 +1,10 @@
 .layout-navbar {
     position: absolute;
-    top: var(--navbar-height);
+    top: var(--header-height);
     left: 50%;
     transform: translate(-50%);
+
+    font-size: clamp(12px, 1.3vw, 16px);
 
     width: var(--page-content-width);
     height: var(--navbar-height);
@@ -13,6 +15,20 @@
     background-color: #fff;
     border-radius: 5px;
     filter: drop-shadow(0 0 5px #fff);
+
+    &::before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 80%;
+        background-color: #fff;
+
+        z-index: -1;
+        left: 50%;
+        transform: translateX(-50%);
+
+        transition: width 100ms;
+    }
 
     ul {
         display: flex;
@@ -68,6 +84,29 @@
             &::before {
                 margin: 0;
                 font-size: 14px;
+            }
+        }
+    }
+
+    &.sticky {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        z-index: 100;
+
+        &::before {
+            width: 100vw;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .layout-navbar {
+        ul {
+            li {
+                display: none;
             }
         }
     }

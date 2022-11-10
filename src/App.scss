@@ -23,3 +23,9 @@
 span.orange {
     color: var(--safety-orange-blaze-orange);
 }
+
+@media screen and (max-width: 500px) {
+    :root {
+        --header-height: calc(var(--navbar-height) * 3.5);
+    }
+}

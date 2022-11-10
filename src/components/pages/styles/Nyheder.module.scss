@@ -1,0 +1,180 @@
+.nyheder-section {
+    font-size: clamp(12px, 1vw, 16px);
+
+    .nyheder-section-content {
+        $grid-gap: 1.5em;
+
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: $grid-gap;
+
+        width: var(--page-content-width);
+        margin: 80px auto;
+
+        &.nyheder-teaser {
+            display: block;
+
+            .nyheder-section-content-title {
+                text-align: center;
+                font-size: 2em;
+                margin: 0;
+            }
+            .nyheder-section-content-text {
+                text-align: center;
+                color: var(--dim-gray);
+            }
+            .nyheder-section-separator {
+                position: relative;
+
+                margin: 30px auto 50px auto;
+                width: 100px;
+
+                &::before {
+                    content: "";
+                    display: block;
+                    border: solid 1px var(--platinum);
+                    width: 100%;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 50%;
+                    transform: translate(50%, -50%);
+
+                    display: block;
+                    width: 8px;
+                    height: 8px;
+
+                    box-shadow: 0 0 0 2px white;
+
+                    background-color: white;
+                    border: solid 2px var(--safety-orange-blaze-orange);
+                    border-radius: 100vw;
+                }
+            }
+        }
+
+        .nyheder-section-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
+            gap: $grid-gap;
+
+            &.nyheder-teaser {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .nyheder-section-content-nyhed {
+                width: 100%;
+                height: 100%;
+                text-decoration: none;
+
+                .nyhed-image-container {
+                    height: 200px;
+                    overflow: hidden;
+                    img {
+                        width: 100%;
+                        border-radius: 10px;
+                    }
+                }
+
+                .nyhed-content {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    box-sizing: border-box;
+                    padding: 20px;
+                    color: var(--dim-gray);
+                    height: calc(100% - 200px);
+
+                    box-shadow: 0 0 5px 5px var(--cultured);
+
+                    h2 {
+                        font-size: 1.3em;
+                        font-weight: 500;
+
+                        color: black;
+                        margin: 0;
+                        margin-bottom: 20px;
+                    }
+                    p {
+                        width: 100%;
+                        margin: 0;
+                    }
+
+                    hr {
+                        margin: 20px 0;
+                        border-color: var(--cultured);
+                    }
+
+                    i {
+                        margin: 0;
+                        margin-right: 10px;
+
+                        &::before {
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+        }
+        .nyheder-section-readmore {
+            grid-column: 2;
+
+            background-color: var(--safety-orange-blaze-orange);
+            padding: 13px 30px;
+            border-radius: 7px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .nyheder-section-pagination {
+            display: flex;
+            gap: 8px;
+            margin: 30px 0;
+
+            button {
+                min-width: 40px;
+                height: 40px;
+                background-color: white;
+                border: solid 1px var(--platinum);
+                border-radius: 5px;
+
+                transition: all 250ms;
+
+                cursor: pointer;
+
+                &:hover,
+                &.active {
+                    color: white;
+                    background-color: var(--safety-orange-blaze-orange);
+                }
+                &.active {
+                    cursor: default;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .nyheder-section {
+        .nyheder-section-content {
+            .nyheder-section-content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .nyheder-section {
+        font-size: 16px;
+
+        .nyheder-section-content {
+            grid-template-columns: 1fr;
+        }
+    }
+}

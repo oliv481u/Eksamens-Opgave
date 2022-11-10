@@ -3,6 +3,7 @@ import HjaelpFraStroem from "../HjaelpFraStroem"
 import Testimonials from "../Testimonials"
 import Team from "../Team"
 import Services from "./Services"
+import Nyheder from "./Nyheder"
 
 
 const Forside = () => {
@@ -13,7 +14,7 @@ const Forside = () => {
         <Services teaser />
         <Testimonials />
         <Team />
-        {/* <NyhedsEmbed /> */}
+        <Nyheder teaser />
     </>
 }
 

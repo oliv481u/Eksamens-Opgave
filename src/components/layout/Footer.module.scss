@@ -143,3 +143,38 @@
         }
     }
 }
+
+@media screen and (max-width: 1000px) {
+    .layout-footer {
+        height: fit-content;
+        .layout-footer-main-content {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .layout-footer {
+        .layout-footer-main-content {
+            grid-template-columns: 1fr;
+        }
+
+        .layout-footer-main-content {
+            justify-items: start;
+
+            .footer-content-nyhedsbrev {
+                button {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+        .layout-footer-content-bottom {
+            flex-direction: column-reverse;
+
+            .layout-footer-content-bottom-SOME-container {
+                margin-top: 20px;
+            }
+        }
+    }
+}

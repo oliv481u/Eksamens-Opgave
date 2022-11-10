@@ -1,8 +1,9 @@
 .layout-header {
     width: 100%;
-    height: var(--navbar-height);
+    height: var(--header-height);
     padding-bottom: calc(var(--navbar-height) / 2);
     background-color: var(--onyx);
+    font-size: clamp(12px, 1.3vw, 16px);
 
     .layout-header-content {
         width: var(--page-content-width);
@@ -40,6 +41,40 @@
                 color: var(--safety-orange-blaze-orange);
                 margin: 0;
                 margin-right: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .layout-header {
+        .layout-header-contactinfo {
+            flex-direction: column;
+            align-items: flex-start;
+            p,
+            a {
+                margin: 2px;
+                text-align: left;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .layout-header {
+        font-size: 16px;
+
+        .layout-header-content {
+            flex-direction: column;
+            height: 80%;
+        }
+        .layout-header-contactinfo {
+            flex-direction: column;
+            align-items: center;
+            p,
+            a {
+                margin: 2px;
+                text-align: left;
             }
         }
     }

@@ -43,3 +43,9 @@
 .fa-pinterest:before {
   content: "\f231";
 }
+.fa-comment:before {
+  content: "\f086";
+}
+.fa-calender::before {
+  content: "\f073";
+}

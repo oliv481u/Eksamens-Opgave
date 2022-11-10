@@ -128,3 +128,9 @@
         }
     }
 }
+
+@media screen and (max-width: 1000px) {
+    .team-members-section {
+        flex-wrap: wrap;
+    }
+}

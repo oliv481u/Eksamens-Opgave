@@ -8,6 +8,8 @@
     display: flex;
     align-items: center;
 
+    font-size: clamp(12px, 1.4vw, 16px);
+
     & > div {
         display: flex;
         align-items: center;
@@ -31,6 +33,19 @@
                 &:last-of-type {
                     color: var(--safety-orange-blaze-orange);
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .subpageheader-section {
+        & > div {
+            display: block;
+            text-align: center;
+
+            nav {
+                display: none;
             }
         }
     }

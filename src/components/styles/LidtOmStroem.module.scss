@@ -121,5 +121,25 @@
 
     img {
         border-radius: 8px;
+        width: clamp(10em, 30vw, 30em);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .hvemervi-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+
+        h2 {
+            margin: auto;
+
+            .hvemervi-underline {
+                margin: 20px 0;
+            }
+        }
+
+        img {
+            display: none;
+        }
     }
 }

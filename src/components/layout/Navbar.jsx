@@ -1,8 +1,19 @@
+import { useEffect, useRef, useState } from "react"
 import { NavLink } from "react-router-dom"
 import styles from "./Navbar.module.scss"
 
 const Navbar = () => {
-    return <nav className={styles["layout-navbar"]}>
+
+    const [scroll, setScroll] = useState()
+    const navRef = useRef()
+
+    useEffect(() => {
+        document.addEventListener('scroll', () => setScroll(window.scrollY))
+
+        return () => document.removeEventListener('scroll', () => setScroll(window.scrollY))
+    }, [])
+
+    return <nav ref={navRef} className={`${styles["layout-navbar"]} ${navRef.current && scroll > navRef.current.offsetHeight + 80 ? styles["sticky"] : ""}`}>
         <ul>
             <li><NavbarLink to="/">FORSIDE</NavbarLink></li>
             <li><NavbarLink to="/om-os">OM OS</NavbarLink></li>

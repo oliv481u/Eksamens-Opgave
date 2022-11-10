@@ -1,0 +1,68 @@
+.arkiv-section {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+
+    font-size: clamp(12px, 1.4vw, 16px);
+
+    h2 {
+        font-weight: 500;
+    }
+
+    .arkiv-section-nyhed {
+        display: flex;
+        text-decoration: none;
+        color: black;
+        gap: 1em;
+
+        .arkiv-section-nyhed-image-container {
+            min-width: 80px;
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+            border-radius: 5px;
+
+            img {
+                height: 100%;
+            }
+        }
+        .arkiv-section-nyhed-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            p {
+                color: var(--dim-gray);
+
+                margin: 0;
+                margin-bottom: 10px;
+
+                i::before {
+                    font-size: 15px;
+
+                    margin: 0;
+                    margin-right: 10px;
+                }
+            }
+        }
+        h3 {
+            flex: 1;
+            font-weight: 400;
+            margin: 0;
+        }
+    }
+    hr {
+        margin: 20px 0;
+        border-color: var(--cultured);
+
+        &:last-of-type {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .arkiv-section {
+        font-size: 16px;
+    }
+}

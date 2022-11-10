@@ -7,6 +7,8 @@ const ScrollToTop = () => {
 
     useEffect(() => {
         document.addEventListener('scroll', () => setScroll(window.scrollY))
+
+        return () => document.removeEventListener('scroll', () => setScroll(window.scrollY))
     }, [])
 
     function Scroll() {
