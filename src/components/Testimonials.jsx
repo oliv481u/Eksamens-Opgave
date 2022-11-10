@@ -14,7 +14,7 @@ const Testimonials = () => {
     }
 
     const [dragPos, _setDragPos] = useState(0)
-    const dragPosRef = useRef(dragging)
+    const dragPosRef = useRef(dragPos)
     const setDragPos = data => {
         dragPosRef.current = data
         _setDragPos(data)

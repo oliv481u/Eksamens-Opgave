@@ -1,0 +1,140 @@
+.services-section {
+    .services-section-main {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 30px;
+
+        width: var(--page-content-width);
+        margin: 100px auto;
+
+        .services-section-main-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            & > button {
+                text-align: left;
+
+                text-indent: 20px;
+
+                height: 50px;
+                border: solid 1px var(--platinum);
+                border-radius: 8px;
+                transition: all 500ms;
+
+                user-select: none;
+
+                background-color: white;
+
+                &:hover,
+                &.active {
+                    background-color: var(--safety-orange-blaze-orange);
+                    color: white;
+                }
+                &:not(.active) {
+                    cursor: pointer;
+                }
+                &::after {
+                    content: "\2192";
+                    margin-left: 15px;
+                }
+            }
+        }
+
+        .services-section-main-content {
+            h2 {
+                font-size: 2em;
+                margin: 20px 0;
+            }
+
+            .services-section-main-image-container {
+                img {
+                    border-radius: 8px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.services-teaser-section {
+    .services-teaser-section-main {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 4em;
+        width: var(--page-content-width);
+        margin: auto;
+
+        .services-teaser-section-separator {
+            position: relative;
+            width: 100px;
+
+            &::before {
+                content: "";
+                display: block;
+                border: solid 1px var(--platinum);
+                width: 100%;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+
+                display: block;
+                width: 8px;
+                height: 8px;
+
+                box-shadow: 0 0 0 2px white;
+
+                background-color: white;
+                border: solid 2px var(--safety-orange-blaze-orange);
+                border-radius: 100vw;
+            }
+        }
+        .services-teaser-section-services {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2em;
+
+            margin-top: 5em;
+
+            .services-teaser-section-services-service {
+                display: flex;
+
+                i {
+                    color: var(--safety-orange-blaze-orange);
+                    &::before {
+                        font-size: 50px;
+                    }
+                }
+
+                h3 {
+                    margin: 0;
+                }
+
+                p {
+                    $line-height: 26px;
+
+                    color: var(--dim-gray);
+                    overflow: hidden;
+                    line-height: $line-height;
+                    height: calc($line-height * 3);
+                }
+            }
+        }
+    }
+
+    .services-teaser-section-booking {
+        box-shadow: (0 0 8px 4px var(--cultured));
+
+        form {
+            width: var(--page-content-width);
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}

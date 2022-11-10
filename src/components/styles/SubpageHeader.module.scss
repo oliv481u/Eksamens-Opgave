@@ -1,0 +1,37 @@
+.subpageheader-section {
+    height: 200px;
+    background-color: var(--cultured);
+
+    box-sizing: border-box;
+    padding-top: calc(var(--navbar-height) / 2);
+
+    display: flex;
+    align-items: center;
+
+    & > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: var(--page-content-width);
+        margin: auto;
+
+        h1 {
+            font-size: 2.2em;
+            margin: 0;
+        }
+
+        nav {
+            color: var(--dim-gray);
+            font-weight: 500;
+
+            a {
+                color: inherit;
+                text-decoration: none;
+
+                &:last-of-type {
+                    color: var(--safety-orange-blaze-orange);
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import './App.scss';
+import './Fonts.scss';
 
 //Components
 import Header from './components/layout/Header';
@@ -14,6 +15,7 @@ import Services from './components/pages/Services';
 import Faq from './components/pages/Faq';
 import Nyheder from './components/pages/Nyheder';
 import Kontakt from './components/pages/Kontakt';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
 	return (
@@ -32,6 +34,7 @@ function App() {
 					</Routes>
 				</main>
 				<Footer />
+				<ScrollToTop />
 			</Router>
 		</div>
 	);
