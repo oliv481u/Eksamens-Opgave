@@ -21,26 +21,36 @@ const UdvalgtNyhed = () => {
 
     if (!data) return
 
+    const date = new Date(data.received)
+    const day = date.getDate().toLocaleString('default', { minimumIntegerDigits: 2 })
+    const month = date.toLocaleString('default', { month: 'long', }).slice(0, 3)
+
     return <section className={styles["udvalgtnyhed"]}>
         <SubpageHeader title={data.title} />
 
         <div className={styles["udvalgtnyhed-content"]}>
-            <article>
-                <div>
-                    <img src={`/images/news/${data.image}`} alt="" />
-                </div>
-                <div>
-                    <p>
-                        <i className="fa-comment" />
-                        {data.comments.length}
-                    </p>
-                    <h2>{data.title}</h2>
-                    <hr />
-                    <p>
-                        {data.content}
-                    </p>
+            <div className={styles["udvalgtnyhed-content-main"]}>
+                <article>
+                    <div className={styles["nyhed-image-container"]}>
+                        <img src={`/images/news/${data.image}`} alt="" />
+                        <div className={styles["nyhed-date"]}>
+                            <p className={styles["nyhed-date-day"]}>{day}</p>
+                            <p className={styles["nyhed-date-month"]}>{month}</p>
+                        </div>
+                    </div>
+                    <div className={styles["nyhed-content-text"]}>
+                        <p>
+                            <i className="fa-comment" />
+                            {data.comments.length}
+                        </p>
+                        <h2>{data.title}</h2>
+                        <hr />
+                        <p>
+                            {data.content}
+                        </p>
 
-                </div>
+                    </div>
+                </article>
 
                 <h3>Kommentarer ({data.comments.length})</h3>
                 {data.comments.map((x, index) => {
@@ -48,7 +58,7 @@ const UdvalgtNyhed = () => {
                     const date = new Date(x.received)
                     const formattedDate = `${date.getDate().toLocaleString('default', { minimumIntegerDigits: 2 })} ${date.toLocaleString('default', { month: 'long', }).slice(0, 3)}, ${date.getFullYear()}`
 
-                    return <div key={"comment" + index} className={styles["udvalgtnyhed-commment"]}>
+                    return <div key={"comment" + index} className={styles["udvalgtnyhed-comment"]}>
                         <b>{x.name}</b>
                         <p>
                             <i className="fa-calender" />
@@ -70,7 +80,7 @@ const UdvalgtNyhed = () => {
                     <button>KOMMENTER</button>
                 </form>
 
-            </article>
+            </div>
 
             <Arkiv random />
         </div>

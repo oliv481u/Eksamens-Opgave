@@ -72,11 +72,43 @@
                 text-decoration: none;
 
                 .nyhed-image-container {
+                    position: relative;
                     height: 200px;
                     overflow: hidden;
                     img {
                         width: 100%;
                         border-radius: 10px;
+                    }
+
+                    .nyhed-date {
+                        position: absolute;
+                        top: 1.5em;
+                        left: 1.5em;
+
+                        width: 3em;
+                        height: 4.5em;
+
+                        box-sizing: border-box;
+                        padding-top: 0.4em;
+
+                        border-radius: 0.3em;
+                        background-color: var(--safety-orange-blaze-orange);
+
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+
+                        text-align: center;
+
+                        p {
+                            margin: 0.1em;
+                            color: white;
+                            line-height: 1em;
+                        }
+                        .nyhed-date-day {
+                            font-size: 1.4em;
+                        }
+                        .nyhed-date-month {
+                            font-size: 0.9em;
+                        }
                     }
                 }
 

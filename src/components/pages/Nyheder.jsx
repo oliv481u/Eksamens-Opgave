@@ -24,11 +24,20 @@ const Nyheder = ({ teaser = false }) => {
             <div className={styles["nyheder-section-content"]}>
                 <article>
                     <div className={styles["nyheder-section-content-grid"]}>
-                        {news && news.map((x, index) =>
-                            <NavLink to={`/nyhed-${x._id}`} key={"nyhed" + index} className={styles["nyheder-section-content-nyhed"]}>
+                        {news && news.map((x, index) => {
+
+                            const date = new Date(x.received)
+                            const day = date.getDate().toLocaleString('default', { minimumIntegerDigits: 2 })
+                            const month = date.toLocaleString('default', { month: 'long', }).slice(0, 3)
+
+
+                            return <NavLink to={`/nyhed-${x._id}`} key={"nyhed" + index} className={styles["nyheder-section-content-nyhed"]}>
                                 <div className={styles["nyhed-image-container"]}>
                                     <img src={`/images/news/${x.image}`} alt="" draggable={false} />
-                                    <div></div>
+                                    <div className={styles["nyhed-date"]}>
+                                        <p className={styles["nyhed-date-day"]}>{day}</p>
+                                        <p className={styles["nyhed-date-month"]}>{month}</p>
+                                    </div>
                                 </div>
                                 <div className={styles["nyhed-content"]}>
                                     <div>
@@ -45,7 +54,7 @@ const Nyheder = ({ teaser = false }) => {
                                     </div>
                                 </div>
                             </NavLink>
-                        )}
+                        })}
                     </div>
                     <div className={styles["nyheder-section-pagination"]}>
                         <button>prev</button>
@@ -69,11 +78,19 @@ const Nyheder = ({ teaser = false }) => {
             <div className={styles["nyheder-section-separator"]}></div>
             <article>
                 <div className={`${styles["nyheder-section-content-grid"]} ${styles["nyheder-teaser"]}`}>
-                    {news && news.slice(0, 3).map((x, index) =>
-                        <NavLink to={`/nyhed-${x._id}`} key={"nyhed" + index} className={styles["nyheder-section-content-nyhed"]}>
+                    {news && news.slice(0, 3).map((x, index) => {
+
+                        const date = new Date(x.received)
+                        const day = date.getDate().toLocaleString('default', { minimumIntegerDigits: 2 })
+                        const month = date.toLocaleString('default', { month: 'long', }).slice(0, 3)
+
+                        return <NavLink to={`/nyhed-${x._id}`} key={"nyhed" + index} className={styles["nyheder-section-content-nyhed"]}>
                             <div className={styles["nyhed-image-container"]}>
                                 <img src={`/images/news/${x.image}`} alt="" draggable={false} />
-                                <div></div>
+                                <div className={styles["nyhed-date"]}>
+                                    <p className={styles["nyhed-date-day"]}>{day}</p>
+                                    <p className={styles["nyhed-date-month"]}>{month}</p>
+                                </div>
                             </div>
                             <div className={styles["nyhed-content"]}>
                                 <div>
@@ -82,7 +99,7 @@ const Nyheder = ({ teaser = false }) => {
                                 </div>
                             </div>
                         </NavLink>
-                    )}
+                    })}
                     <NavLink to={"/nyheder"} className={styles["nyheder-section-readmore"]}>FLERE NYHEDER ...</NavLink>
                 </div>
             </article>

@@ -6,7 +6,93 @@
         width: var(--page-content-width);
         margin: auto;
 
+        font-size: clamp(12px, 1.4vw, 16px);
+
         article {
+            .nyhed-image-container {
+                overflow: hidden;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    border-radius: 10px 10px 0 0;
+                }
+
+                .nyhed-date {
+                    position: absolute;
+                    top: 1.5em;
+                    left: 1.5em;
+
+                    width: 3em;
+                    height: 4.5em;
+
+                    box-sizing: border-box;
+                    padding-top: 0.4em;
+
+                    border-radius: 0.3em;
+                    background-color: var(--safety-orange-blaze-orange);
+
+                    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+
+                    text-align: center;
+
+                    p {
+                        margin: 0.1em;
+                        color: white;
+                        line-height: 1em;
+                    }
+                    .nyhed-date-day {
+                        font-size: 1.4em;
+                    }
+                    .nyhed-date-month {
+                        font-size: 0.9em;
+                    }
+                }
+            }
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            color: var(--dim-gray);
+
+            box-shadow: 0 0 5px 5px var(--cultured);
+
+            .nyhed-content-text {
+                box-sizing: border-box;
+                padding: 20px;
+                box-shadow: 0 -5px 5px 1px white;
+
+                h2 {
+                    font-size: 1.3em;
+                    font-weight: 500;
+
+                    color: black;
+                    margin: 0;
+                    margin-bottom: 20px;
+                }
+                p {
+                    width: 100%;
+                    margin: 0;
+                }
+
+                hr {
+                    margin: 20px 0;
+                    border-color: var(--cultured);
+                }
+
+                i {
+                    margin: 0;
+                    margin-right: 10px;
+
+                    &::before {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+
+        .udvalgtnyhed-content-main {
             form {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -68,15 +154,16 @@
                 font-weight: 500;
             }
 
-            .udvalgtnyhed-commment {
+            .udvalgtnyhed-comment {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 margin-left: 1.5em;
+                margin-bottom: 1.5em;
 
                 b {
                     flex: 1;
-                    font-weight: 400;
+                    font-weight: 500;
                     margin: 0;
                 }
                 p {
@@ -90,6 +177,33 @@
 
                         margin: 0;
                         margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .udvalgtnyhed {
+        .udvalgtnyhed-content {
+            grid-template-columns: 1fr;
+            margin: 2em auto;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .udvalgtnyhed {
+        .udvalgtnyhed-content {
+            .udvalgtnyhed-content-main {
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    * {
+                        width: 100%;
+                        grid-column: 1;
+                        padding: 0;
                     }
                 }
             }
