@@ -31,7 +31,7 @@
         transition: width 100ms;
     }
 
-    ul {
+    .layout-navbar-pc {
         display: flex;
         align-items: center;
         width: 60%;
@@ -52,6 +52,21 @@
             transition: none;
             color: var(--safety-orange-blaze-orange);
         }
+    }
+
+    .layout-navbar-mobile {
+        display: none;
+        justify-content: center;
+        align-items: center;
+
+        flex: none;
+
+        padding: 0;
+        width: calc(var(--navbar-height) - 2.5em);
+        height: calc(var(--navbar-height) - 2.5em);
+        margin: auto 1.5em;
+
+        background-color: var(--onyx);
     }
 
     .layout-navbar-search-container {
@@ -103,12 +118,80 @@
     }
 }
 
+.layout-mobile-navigation {
+    position: fixed;
+
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5em;
+    font-size: 1.5em;
+
+    padding: 0;
+    text-align: center;
+
+    z-index: 100;
+
+    margin: 0;
+
+    background-color: var(--onyx);
+    opacity: 0.97;
+
+    list-style: none;
+
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+
+    transform: translateX(-100%);
+    transition: transform 400ms;
+
+    &.active {
+        transform: translateX(0);
+    }
+
+    li {
+        width: fit-content;
+        margin: 0 auto;
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    }
+
+    button {
+        position: absolute;
+        top: 2em;
+        left: 2em;
+
+        width: 5em;
+        height: 5em;
+
+        background-color: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
 @media screen and (max-width: 900px) {
     .layout-navbar {
-        ul {
-            li {
-                display: none;
-            }
+        .layout-navbar-pc {
+            display: none;
         }
+        .layout-navbar-mobile {
+            display: flex;
+        }
+    }
+
+    .layout-mobile-navigation {
+        display: flex;
     }
 }
