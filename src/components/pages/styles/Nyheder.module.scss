@@ -71,6 +71,13 @@
                 height: 100%;
                 text-decoration: none;
 
+                transition: box-shadow 250ms;
+                border-radius: 10px;
+
+                &:hover {
+                    box-shadow: 0 0 10px 5px var(--gainsboro);
+                }
+
                 .nyhed-image-container {
                     position: relative;
                     height: 200px;
@@ -123,6 +130,8 @@
                     height: calc(100% - 200px);
 
                     box-shadow: 0 0 5px 5px var(--cultured);
+
+                    border-radius: 0 0 10px 10px;
 
                     h2 {
                         font-size: 1.3em;

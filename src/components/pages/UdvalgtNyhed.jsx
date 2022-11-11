@@ -26,7 +26,7 @@ const UdvalgtNyhed = () => {
     const month = date.toLocaleString('default', { month: 'long', }).slice(0, 3)
 
     return <section className={styles["udvalgtnyhed"]}>
-        <SubpageHeader title={data.title} />
+        <SubpageHeader title={data.title} locationName={data.title} />
 
         <div className={styles["udvalgtnyhed-content"]}>
             <div className={styles["udvalgtnyhed-content-main"]}>
@@ -41,7 +41,7 @@ const UdvalgtNyhed = () => {
                     <div className={styles["nyhed-content-text"]}>
                         <p>
                             <i className="fa-comment" />
-                            {data.comments.length}
+                            {data.comments.length} kommentar{data.comments.length === 1 ? "" : "er"}
                         </p>
                         <h2>{data.title}</h2>
                         <hr />

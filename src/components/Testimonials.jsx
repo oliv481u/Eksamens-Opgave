@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import styles from './styles/Testimonials.module.scss'
 import urldata from '../urldata.json'
+import { useLocation } from 'react-router-dom'
 
 const Testimonials = () => {
-
     const [testimonials, setTestimonials] = useState()
 
     const [dragging, _setDragging] = useState(false)
@@ -33,13 +33,20 @@ const Testimonials = () => {
 
         window.addEventListener('mouseup', MouseUp)
 
-        return () => {
-            window.removeEventListener('mousemove', DragTestimonials)
-            window.removeEventListener('mouseup', MouseUp)
-        }
+        return () => Unsubscribe()
     }, [])
 
+    function Unsubscribe() {
+        window.removeEventListener('mousemove', DragTestimonials)
+        window.removeEventListener('mouseup', MouseUp)
+    }
+
     function MouseDown(e) {
+        if (testimonialContainer.current == null) {
+            Unsubscribe()
+            return
+        }
+
         setDragging(true)
         setDragPos(e.clientX)
         testimonialContainer.current.classList.remove(styles.smooth)
@@ -47,6 +54,11 @@ const Testimonials = () => {
 
     function MouseUp(e) {
         setDragging(false)
+
+        if (testimonialContainer.current == null) {
+            Unsubscribe()
+            return
+        }
         testimonialContainer.current.classList.add(styles.smooth)
 
         const testimonialContainerWidth = testimonialContainer.current.getBoundingClientRect().width + 40
