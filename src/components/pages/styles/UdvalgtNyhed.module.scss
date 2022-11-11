@@ -1,0 +1,98 @@
+.udvalgtnyhed {
+    .udvalgtnyhed-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+
+        width: var(--page-content-width);
+        margin: auto;
+
+        article {
+            form {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1em;
+
+                margin: 2em 0;
+
+                h3 {
+                    grid-column: span 2;
+                }
+
+                input {
+                    min-height: 3.5em;
+                    flex: 1;
+                    margin-right: 15px;
+                    border-radius: 5px;
+                    border: solid 1px var(--platinum);
+
+                    text-indent: 20px;
+                }
+
+                textarea {
+                    margin-right: 15px;
+                    border-radius: 5px;
+                    border: solid 1px var(--platinum);
+
+                    box-sizing: border-box;
+                    padding: 16px 20px;
+
+                    resize: none;
+
+                    grid-column: span 2;
+                }
+
+                button {
+                    width: 10em;
+
+                    height: 4em;
+                    border: solid 1px var(--platinum);
+                    border-radius: 8px;
+
+                    user-select: none;
+
+                    background-color: white;
+                    cursor: pointer;
+
+                    background-color: var(--safety-orange-blaze-orange);
+                    color: white;
+                }
+            }
+
+            .contactform-validationmsg {
+                p {
+                    margin: 0;
+                }
+            }
+
+            h3 {
+                font-weight: 500;
+            }
+
+            .udvalgtnyhed-commment {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin-left: 1.5em;
+
+                b {
+                    flex: 1;
+                    font-weight: 400;
+                    margin: 0;
+                }
+                p {
+                    color: var(--dim-gray);
+
+                    margin: 0;
+                    margin-bottom: 10px;
+
+                    i::before {
+                        font-size: 15px;
+
+                        margin: 0;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

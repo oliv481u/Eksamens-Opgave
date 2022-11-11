@@ -1,0 +1,68 @@
+.contactform {
+    .contactform-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2em;
+
+        margin: 2em 0;
+
+        .contactform-form-information {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+
+            input {
+                height: 3.5em;
+                flex: 1;
+                margin-right: 15px;
+                border-radius: 5px;
+                border: solid 1px var(--platinum);
+
+                text-indent: 20px;
+            }
+        }
+        textarea {
+            margin-right: 15px;
+            border-radius: 5px;
+            border: solid 1px var(--platinum);
+
+            box-sizing: border-box;
+            padding: 16px 20px;
+
+            resize: none;
+        }
+
+        button {
+            width: 10em;
+
+            height: 4em;
+            border: solid 1px var(--platinum);
+            border-radius: 8px;
+
+            user-select: none;
+
+            background-color: white;
+            cursor: pointer;
+
+            background-color: var(--safety-orange-blaze-orange);
+            color: white;
+        }
+
+        .contactform-validationmsg {
+            p {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .contactform {
+        .contactform-form {
+            grid-template-columns: 1fr;
+            .contactform-form-information {
+                min-height: 175px;
+            }
+        }
+    }
+}

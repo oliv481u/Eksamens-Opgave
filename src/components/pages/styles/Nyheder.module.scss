@@ -164,6 +164,19 @@
         .nyheder-section-content {
             .nyheder-section-content-grid {
                 grid-template-columns: 1fr;
+
+                .nyheder-section-content-nyhed {
+                    .nyhed-content {
+                        height: max-content;
+                    }
+                    .nyhed-image-container {
+                        height: auto;
+
+                        img {
+                            border-radius: 10px 10px 0 0;
+                        }
+                    }
+                }
             }
         }
     }
@@ -175,6 +188,15 @@
 
         .nyheder-section-content {
             grid-template-columns: 1fr;
+
+            .nyheder-section-content-grid {
+                &.nyheder-teaser {
+                    grid-template-columns: 1fr;
+                }
+            }
+            .nyheder-section-readmore {
+                grid-column: 1;
+            }
         }
     }
 }

@@ -1,3 +1,4 @@
+import Slider from "../Slider"
 import LidtOmStroem from "../LidtOmStroem"
 import HjaelpFraStroem from "../HjaelpFraStroem"
 import Testimonials from "../Testimonials"
@@ -19,9 +20,3 @@ const Forside = () => {
 }
 
 export default Forside
-
-const Slider = () => {
-    return <div style={{ height: "500px", backgroundColor: "darkblue" }}>
-
-    </div>
-}

@@ -25,7 +25,7 @@ const Nyheder = ({ teaser = false }) => {
                 <article>
                     <div className={styles["nyheder-section-content-grid"]}>
                         {news && news.map((x, index) =>
-                            <NavLink to={"/"} key={"nyhed" + index} className={styles["nyheder-section-content-nyhed"]}>
+                            <NavLink to={`/nyhed-${x._id}`} key={"nyhed" + index} className={styles["nyheder-section-content-nyhed"]}>
                                 <div className={styles["nyhed-image-container"]}>
                                     <img src={`/images/news/${x.image}`} alt="" draggable={false} />
                                     <div></div>
@@ -70,7 +70,7 @@ const Nyheder = ({ teaser = false }) => {
             <article>
                 <div className={`${styles["nyheder-section-content-grid"]} ${styles["nyheder-teaser"]}`}>
                     {news && news.slice(0, 3).map((x, index) =>
-                        <NavLink to={"/"} key={"nyhed" + index} className={styles["nyheder-section-content-nyhed"]}>
+                        <NavLink to={`/nyhed-${x._id}`} key={"nyhed" + index} className={styles["nyheder-section-content-nyhed"]}>
                             <div className={styles["nyhed-image-container"]}>
                                 <img src={`/images/news/${x.image}`} alt="" draggable={false} />
                                 <div></div>

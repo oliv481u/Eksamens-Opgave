@@ -141,11 +141,13 @@
         }
 
         form {
+            position: relative;
             width: var(--page-content-width);
             margin: auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             input {
                 height: 3.5em;
                 width: clamp(5em, 1.5vw, 175px);
@@ -171,6 +173,14 @@
 
                 background-color: var(--safety-orange-blaze-orange);
                 color: white;
+            }
+        }
+
+        .services-teaser-section-booking-validationmsg {
+            text-align: center;
+            transform: translateY(-50%);
+            p {
+                margin: 2px;
             }
         }
     }

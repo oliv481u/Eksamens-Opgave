@@ -1,0 +1,93 @@
+.kontakt-section {
+    font-size: clamp(12px, 1.4vw, 16px);
+
+    .kontakt-section-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+
+        width: var(--page-content-width);
+        margin: auto;
+
+        .kontakt-contactinfo {
+            grid-column: span 2;
+
+            display: grid;
+            grid-template-columns: 1fr min-content 1fr min-content 1fr;
+            height: 6em;
+            margin: 5em 0;
+            justify-content: space-evenly;
+            align-items: center;
+
+            border: solid 1px var(--platinum);
+            border-radius: 8px;
+
+            font-style: normal;
+
+            hr {
+                height: 60%;
+                border-color: var(--platinum);
+                border-left: none;
+            }
+
+            & > div {
+                display: flex;
+
+                & > div {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                i {
+                    color: var(--safety-orange-blaze-orange);
+                    &::before {
+                        font-size: 1.5em;
+                        margin-right: 0.6em;
+                    }
+                }
+                b {
+                    font-weight: 500;
+                }
+                a,
+                p {
+                    margin: 0.2em 0;
+                    font-size: 0.9em;
+                    text-decoration: none;
+                    color: var(--dim-gray);
+                }
+            }
+        }
+
+        .kontakt-section-map-container {
+            width: 100%;
+            height: 100%;
+
+            padding: 2em;
+            box-sizing: border-box;
+
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .kontakt-section {
+        .kontakt-section-content {
+            grid-template-columns: 1fr;
+            .kontakt-contactinfo {
+                grid-template-columns: 1fr;
+
+                height: auto;
+                padding: 2em;
+                gap: 1em;
+
+                hr {
+                    height: 0;
+                    width: 80%;
+                }
+            }
+        }
+    }
+}

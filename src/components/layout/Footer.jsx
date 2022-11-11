@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 import urldata from "../../urldata.json"
-import styles from "./Footer.module.scss"
+import styles from "./styles/Footer.module.scss"
 
 const Footer = () => {
 
@@ -19,11 +19,9 @@ const Footer = () => {
         e.preventDefault()
 
         const formData = new FormData(e.target)
-        const dataArray = [...formData]
-        const data = Object.fromEntries(dataArray)
 
         //Email validation regex
-        if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/.test(data.email)) {
+        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(formData.get("email"))) {
             setEmailSignupResponse(<sub style={{ color: "red" }}>Indtast en email!</sub>)
             return;
         }

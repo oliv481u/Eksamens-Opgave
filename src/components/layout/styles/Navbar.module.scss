@@ -3,6 +3,7 @@
     top: var(--header-height);
     left: 50%;
     transform: translate(-50%);
+    z-index: 1;
 
     font-size: clamp(12px, 1.3vw, 16px);
 

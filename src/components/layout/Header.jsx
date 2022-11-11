@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import styles from "./Header.module.scss"
+import styles from "./styles/Header.module.scss"
 import urldata from "../../urldata.json"
 
 const Header = () => {

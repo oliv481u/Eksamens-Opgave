@@ -9,12 +9,42 @@ const Services = ({ teaser }) => {
 
     const [data, setData] = useState()
     const [display, setDisplay] = useState(0)
+    const [bookingValidationMsg, setBookingValidationMsg] = useState()
 
     useEffect(() => {
         fetch(`${urldata.url}/service`)
             .then(res => res.json())
             .then(json => { setData(json) })
     }, [])
+
+    function SubmitBooking(e) {
+        e.preventDefault()
+
+        const formData = new FormData(e.target)
+
+        if (formData.get("name") === "") {
+            setBookingValidationMsg(<p style={{ color: "red" }}>Indtast dit navn</p>)
+            return
+        }
+        else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(formData.get("email"))) {
+            setBookingValidationMsg(<p style={{ color: "red" }}>Indtast en gyldig email</p>)
+            return
+        }
+        else if (!/^[0-9]+$/g.test(formData.get("phone"))) {
+            setBookingValidationMsg(<p style={{ color: "red" }}>Indtast dit mobilnummer</p>)
+            return
+        }
+
+        fetch(`${urldata.url}/booking`, {
+            method: "POST",
+            body: formData
+        })
+            .then(res => {
+                if (res.ok) {
+                    setBookingValidationMsg(<p style={{ color: "lime" }}>Booking sendt!</p>)
+                }
+            })
+    }
 
     if (!teaser)
         return <section className={styles["services-section"]}>
@@ -65,15 +95,18 @@ const Services = ({ teaser }) => {
         </div>
 
         <div className={styles["services-teaser-section-booking"]}>
-            <form>
+            <form onSubmit={SubmitBooking}>
                 <h3>
                     <span className="orange">Book</span> <br /> service nu
                 </h3>
                 <input name="name" placeholder="Dit navn" type="text" />
                 <input name="email" placeholder="Din email" type="text" />
-                <input name="phone" placeholder="Telefon nr." type="text" />
+                <input name="phone" placeholder="Telefon nr." type="tel" />
                 <button>SEND</button>
             </form>
+            <div className={styles["services-teaser-section-booking-validationmsg"]}>
+                {bookingValidationMsg && bookingValidationMsg}
+            </div>
         </div>
 
     </section>

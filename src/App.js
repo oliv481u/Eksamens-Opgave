@@ -16,6 +16,7 @@ import Faq from './components/pages/Faq';
 import Nyheder from './components/pages/Nyheder';
 import Kontakt from './components/pages/Kontakt';
 import ScrollToTop from './components/ScrollToTop';
+import UdvalgtNyhed from './components/pages/UdvalgtNyhed';
 
 function App() {
 	return (
@@ -25,12 +26,13 @@ function App() {
 				<Navbar />
 				<main>
 					<Routes>
-						<Route path='' element={<Forside />} />
-						<Route path='om-os' element={<OmOs />} />
-						<Route path='services' element={<Services />} />
-						<Route path='faq' element={<Faq />} />
-						<Route path='nyheder' element={<Nyheder />} />
-						<Route path='kontakt' element={<Kontakt />} />
+						<Route path='/' element={<Forside />} />
+						<Route path='/om-os' element={<OmOs />} />
+						<Route path='/services' element={<Services />} />
+						<Route path='/faq' element={<Faq />} />
+						<Route path='/nyheder' element={<Nyheder />} />
+						<Route path='/nyhed-:nyhedId' element={<UdvalgtNyhed />} />
+						<Route path='/kontakt' element={<Kontakt />} />
 					</Routes>
 				</main>
 				<Footer />

@@ -5,6 +5,8 @@
     user-select: none;
     cursor: grabbing;
 
+    font-size: clamp(11px, 1.2vw, 16px);
+
     .testimonials-backgroundimage-container {
         position: absolute;
         overflow: hidden;
@@ -88,14 +90,13 @@
         }
     }
 }
-//translateX(calc(100% + 40px))
+
 .testimonail-container {
     $image-size: 80px;
 
     grid-row: 1;
 
     position: relative;
-    // margin-top: 200px;
 
     box-sizing: border-box;
     padding-top: 50px;
@@ -141,5 +142,11 @@
         margin: 16px 20px 30px 20px;
 
         color: var(--dim-gray);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .testimonials-section {
+        display: none;
     }
 }
