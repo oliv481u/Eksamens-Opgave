@@ -74,7 +74,7 @@ const Nyheder = ({ teaser = false }) => {
                             <button key={"page" + index} onClick={() => setPage(index + 1)} className={page === index + 1 ? styles.active : ""}>{index + 1}</button>
                         )}
                         <button onClick={() => setPage(prevValue => Math.min(prevValue + 1, totalPageCount))}>next</button>
-                        <select onChange={e => setPerPageCount(parseInt(e.target.options[e.target.selectedIndex].value))}>
+                        <select className={styles["nyheder-section-pagination-perpagecount"]} onChange={e => setPerPageCount(parseInt(e.target.options[e.target.selectedIndex].value))}>
                             <option value="4">4</option>
                             <option value="6">6</option>
                             <option value="8">8</option>
