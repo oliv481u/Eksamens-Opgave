@@ -23,10 +23,8 @@ const Nyheder = ({ teaser = false }) => {
     useEffect(() => {
         if (!news)
             return
-        console.log(news)
+
         setTotalPageCount(Math.ceil(news.length / perPageCount))
-        console.log(perPageCount)
-        console.log(totalPageCount)
     }, [news, page, perPageCount])
 
     if (!teaser)

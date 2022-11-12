@@ -21,7 +21,7 @@ const Footer = () => {
         const formData = new FormData(e.target)
 
         //Email validation regex
-        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(formData.get("email"))) {
+        if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(formData.get("email"))) {
             setEmailSignupResponse(<sub style={{ color: "red" }}>Indtast en email!</sub>)
             return;
         }

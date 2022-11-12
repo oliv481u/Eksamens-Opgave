@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 
 import urldata from '../urldata.json'
@@ -17,6 +17,14 @@ const Slider = () => {
             .then(json => { setData(json); setSlideCount(json.length) })
     }, [])
 
+    const ChangeSlide = useCallback((amount) => {
+        setSlideIndex(prevValue => {
+            const newValue = Math.round(prevValue + amount)
+
+            return Math.abs(newValue % slideCount)
+        })
+    }, [slideCount])
+
     useEffect(() => {
         if (!data) return
 
@@ -25,15 +33,8 @@ const Slider = () => {
         }, 15000)
 
         return () => clearInterval(interval)
-    }, [data, slideIndex])
+    }, [data, slideIndex, ChangeSlide])
 
-    function ChangeSlide(amount) {
-        setSlideIndex(prevValue => {
-            const newValue = Math.round(prevValue + amount)
-
-            return Math.abs(newValue % slideCount)
-        })
-    }
 
     return <div className={styles["slider"]}>
         {data && data.map((x, index) => {

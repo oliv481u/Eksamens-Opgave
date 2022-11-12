@@ -19,7 +19,7 @@ const Arkiv = ({ random = false }) => {
                     return json.sort(() => (Math.random() > .5) ? 1 : -1).slice(0, 4)
             }
             ))
-    }, [])
+    }, [random])
 
     return <section className={styles["arkiv-section"]}>
         <h2>Arkiv</h2>

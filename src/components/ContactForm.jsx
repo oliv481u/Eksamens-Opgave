@@ -17,7 +17,7 @@ const ContactForm = () => {
             setFormValidationMsg(<p style={{ color: "red" }}>Indtast dit navn</p>)
             return
         }
-        else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(formData.get("email"))) {
+        else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(formData.get("email"))) {
             setFormValidationMsg(<p style={{ color: "red" }}>Indtast en gyldig email</p>)
             return
         }

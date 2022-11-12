@@ -1,5 +1,3 @@
-import { ReactDOM } from 'react'
-
 import { useQuill } from 'react-quilljs'
 import 'quill/dist/quill.snow.css'
 
@@ -96,7 +94,7 @@ const EditableAbout = () => {
             quill.on('text-change', (e) => {
                 setValue(quill.getText())
             })
-        }, [quill])
+        }, [quill, children])
 
         function Edit(e) {
             setEditing(e.target)
@@ -192,7 +190,7 @@ const EditableBooking = ({ _id, name, email, phone, note, accept }) => {
             quill.on('text-change', (e) => {
                 setValue(quill.getText())
             })
-        }, [quill])
+        }, [quill, children])
 
         function Edit(e) {
             setEditing(e.target)
@@ -224,11 +222,11 @@ const EditableBooking = ({ _id, name, email, phone, note, accept }) => {
     }
 
     return <form ref={mainRef} onSubmit={(e) => { PatchNote(e); PatchAccept(e) }}>
-        <b>{"name" + ":"}</b>
+        <b>{"name:"}</b>
         <p>{name}</p>
-        <b>{"email" + ":"}</b>
+        <b>{"email:"}</b>
         <p>{email}</p>
-        <b>{"phone" + ":"}</b>
+        <b>{"phone:"}</b>
         <p>{phone}</p>
         <EditableValue name={"note"}>{note || "ingen note"}</EditableValue>
         <div>
@@ -297,7 +295,7 @@ const EditableNews = ({ _id, title, content, image }) => {
             quill.on('text-change', (e) => {
                 setValue(quill.getText())
             })
-        }, [quill])
+        }, [quill, children])
 
         function Edit(e) {
             setEditing(e.target)

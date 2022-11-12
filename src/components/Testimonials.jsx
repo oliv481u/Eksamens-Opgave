@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import styles from './styles/Testimonials.module.scss'
 import urldata from '../urldata.json'
-import { useLocation } from 'react-router-dom'
 
 const Testimonials = () => {
     const [testimonials, setTestimonials] = useState()
