@@ -10,12 +10,24 @@ import { NavLink } from "react-router-dom"
 const Nyheder = ({ teaser = false }) => {
 
     const [news, setNews] = useState()
+    const [page, setPage] = useState(1)
+    const [perPageCount, setPerPageCount] = useState(4)
+    const [totalPageCount, setTotalPageCount] = useState(0)
 
     useEffect(() => {
         fetch(`${urldata.url}/news`)
             .then(res => res.json())
-            .then(json => setNews(json.slice(-4)))
+            .then(json => setNews(json))
     }, [])
+
+    useEffect(() => {
+        if (!news)
+            return
+        console.log(news)
+        setTotalPageCount(Math.ceil(news.length / perPageCount))
+        console.log(perPageCount)
+        console.log(totalPageCount)
+    }, [news, page, perPageCount])
 
     if (!teaser)
         return <section className={styles["nyheder-section"]}>
@@ -24,7 +36,7 @@ const Nyheder = ({ teaser = false }) => {
             <div className={styles["nyheder-section-content"]}>
                 <article>
                     <div className={styles["nyheder-section-content-grid"]}>
-                        {news && news.map((x, index) => {
+                        {news && news.slice(perPageCount * (page - 1), perPageCount * page).map((x, index) => {
 
                             const date = new Date(x.received)
                             const day = date.getDate().toLocaleString('default', { minimumIntegerDigits: 2 })
@@ -57,11 +69,16 @@ const Nyheder = ({ teaser = false }) => {
                         })}
                     </div>
                     <div className={styles["nyheder-section-pagination"]}>
-                        <button>prev</button>
-                        <button className={styles.active}>1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button>next</button>
+                        <button onClick={() => setPage(prevValue => Math.max(prevValue - 1, 1))}>prev</button>
+                        {Array.from(Array(totalPageCount)).map((x, index) =>
+                            <button key={"page" + index} onClick={() => setPage(index + 1)} className={page === index + 1 ? styles.active : ""}>{index + 1}</button>
+                        )}
+                        <button onClick={() => setPage(prevValue => Math.min(prevValue + 1, totalPageCount))}>next</button>
+                        <select onChange={e => setPerPageCount(parseInt(e.target.options[e.target.selectedIndex].value))}>
+                            <option value="4">4</option>
+                            <option value="6">6</option>
+                            <option value="8">8</option>
+                        </select>
                     </div>
                 </article>
                 <Arkiv />
