@@ -11,13 +11,26 @@ const UdvalgtNyhed = () => {
 
     const { nyhedId } = useParams()
     const [data, setData] = useState()
+    const [refresh, setRefresh] = useState()
 
 
     useEffect(() => {
         fetch(`${urldata.url}/news/${nyhedId}`)
             .then(res => res.json())
             .then(json => setData(json))
-    }, [nyhedId])
+    }, [nyhedId, refresh])
+
+    function Comment(e) {
+        e.preventDefault()
+
+        const formData = new FormData(e.target)
+
+        fetch(`${urldata.url}/news/comment/${nyhedId}`, {
+            method: "POST",
+            body: formData
+        })
+            .then(() => setRefresh(prevValue => prevValue + 1))
+    }
 
     if (!data) return
 
@@ -70,11 +83,11 @@ const UdvalgtNyhed = () => {
 
                 <hr />
 
-                <form>
+                <form onSubmit={Comment}>
                     <h3>Skriv en kommentar</h3>
 
                     <input type="text" name="name" placeholder="Navn" />
-                    <input type="text" name="name" placeholder="Email" />
+                    <input type="text" name="email" placeholder="Email" />
                     <textarea name="comment" placeholder="Kommentar" id="" cols="30" rows="10"></textarea>
 
                     <button>KOMMENTER</button>

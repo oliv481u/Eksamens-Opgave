@@ -17,6 +17,7 @@ import Nyheder from './components/pages/Nyheder';
 import Kontakt from './components/pages/Kontakt';
 import ScrollToTop from './components/ScrollToTop';
 import UdvalgtNyhed from './components/pages/UdvalgtNyhed';
+import Admin from './components/pages/Admin';
 
 function App() {
 	return (
@@ -33,6 +34,7 @@ function App() {
 						<Route path='/nyheder' element={<Nyheder />} />
 						<Route path='/nyhed-:nyhedId' element={<UdvalgtNyhed />} />
 						<Route path='/kontakt' element={<Kontakt />} />
+						<Route path='/admin' element={<Admin />} />
 					</Routes>
 				</main>
 				<Footer />

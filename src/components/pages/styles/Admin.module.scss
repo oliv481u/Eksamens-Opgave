@@ -1,0 +1,105 @@
+.admin-section {
+    width: var(--page-content-width);
+    margin: auto;
+
+    .admin-editable-container {
+        border: solid 1px var(--platinum);
+        border-radius: 8px;
+        padding: 1.5em;
+        margin-bottom: 2em;
+
+        h2 {
+            font-size: 2em;
+            text-align: center;
+        }
+
+        p {
+            margin-top: 0;
+            font-size: 1.5em;
+
+            color: var(--dim-gray);
+
+            &::after {
+                content: '';
+                display: block;
+                margin: 0 0 1em 0;
+                width: 50%;
+                height: 0;
+                border: solid 1px var(--platinum);
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            &::after {
+                content: "";
+                width: 100%;
+                height: 0;
+
+                margin: 2em 0;
+                border: solid 1px var(--platinum);
+            }
+            &:last-of-type::after {
+                display: none;
+            }
+
+            b {
+                margin-bottom: 0;
+                text-transform: capitalize;
+            }
+
+            & > div {
+                margin-top: 1em;
+            }
+
+            label {
+                margin-right: 1em;
+                font-weight: bold;
+                text-transform: capitalize;
+                cursor: pointer;
+            }
+            input {
+                margin: 0;
+                width: min-content;
+                &[type="file"] {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    button {
+        width: clamp(5em, 0.5vw, 10em);
+
+        height: 4em;
+        border: solid 1px var(--platinum);
+        border-radius: 8px;
+
+        margin: 2em 0;
+
+        user-select: none;
+
+        background-color: white;
+        cursor: pointer;
+
+        background-color: var(--safety-orange-blaze-orange);
+        color: white;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.inactive {
+    display: none;
+}
+
+.admin-richtexteditor {
+    display: none;
+    &.active {
+        display: block;
+    }
+}
